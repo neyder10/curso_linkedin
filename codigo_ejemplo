@@ -1,0 +1,83 @@
+@page "/"
+@* Shift + Alt + A *@
+<div>
+    <h1>Hello, world!</h1>
+    <h2>Titulo</h2>
+    <h3>Subtitulo</h3>
+    <h4>Texto 1</h4>
+    <h5>Texto 2</h5>
+    <h6>Texto 3</h6>
+</div>
+Este exto esta por fuera de etiquetas
+<div>
+    <output>Otro tipo de etiqueta para mostrar texto</output>
+</div>
+
+<div>
+    <label>Otro texto</label>
+</div>
+<div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis pariatur commodi, similique expedita
+        excepturi corrupti distinctio eveniet repellendus veniam facilis, aliquam iure accusamus sint hic nostrum animi
+        incidunt porro?</p>
+</div>
+
+<div>
+    @* Primero se debe de crear la fila, dentro de ella las columnas *@
+    <div class="row center">
+        @* sm: pantalla pequeña como celular
+            md: pantallas medianas como tablets
+            lg: pantalla grande como monitores de portátiles y desktop *@
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="form-label" for="name_p">Nombre pelicula</label>
+            <input class="form-control" type="text" name="name_p" id="name_p" placeholder="Nombre">
+        </div>
+    </div>
+    @* Fila 2: una fila con dos columnas en pantalla mediana y grande
+        en pantalla pequeña se visualizara como dos filas con una columna c/u *@
+    <div class="row">
+        @* Columna 1 *@
+        <select class="form-select" aria-label="Disabled select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        @* Columna 2 *@
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <label class="form-label" for="note">Calificación</label>
+            <input class="form-control" type="number" name="note" id="note">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div>
+        <p>Hola, @funcion_flecha(nombre_pelicula)</p>
+        <p>Hola, @funcion_flecha_2(nombre_pelicula)</p>
+    </div>
+
+    <div>
+        <button class="btn btn-outline-primary" type="button" @onclick="@ConsultarMensajeConsola"> Clic me</button>
+        <button class="btn btn-danger" type="button" @onclick="@ConsultarMensajeConsola"> Clic me</button>
+        <button class="btn btn-info" type="button" @onclick="@ConsultarMensajeConsola"> Clic me</button>
+        <button class="btn btn-success" type="button" @onclick="@ConsultarMensajeConsola"> Clic me</button>
+        <button class="btn btn-alert" type="button" @onclick="@ConsultarMensajeConsola"> Clic me</button>
+    </div>
+</div>
+@code {
+    string nombre_pelicula = "Misión TIC 2022";
+    @* Función flecha *@
+    string funcion_flecha(string valor) => valor.ToUpper();
+    string funcion_flecha_2(string valor) => valor.ToLower();
+    private void ConsultarMensajeConsola()
+    {
+        Console.WriteLine("Validando evento clic del botón");
+    }
+}
